@@ -4,7 +4,7 @@
 \name{safir2}
 \alias{safir2}
 \alias{safir2-package}
-\title{safir2: squire and friends individual rewrite review}
+\title{safir2: squire and friends individual rewrite rewrite}
 \description{
 'safir2' is an upgraded and refactored version of 'safir', which implements a stochastic individual
  immunity and neutralizing antibody titre, as well as allowing for complex vaccine

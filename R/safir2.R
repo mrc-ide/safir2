@@ -1,4 +1,4 @@
-#' safir2: squire and friends individual rewrite review
+#' safir2: squire and friends individual rewrite rewrite
 #'
 #' @description
 #' 'safir2' is an upgraded and refactored version of 'safir', which implements a stochastic individual

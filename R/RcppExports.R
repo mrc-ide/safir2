@@ -8,3 +8,11 @@ testcpp <- function(x) {
     .Call('_safir2_testcpp', PACKAGE = 'safir2', x)
 }
 
+make_get_contact_matrix_rcpp <- function(parameters) {
+    .Call('_safir2_make_get_contact_matrix_rcpp', PACKAGE = 'safir2', parameters)
+}
+
+eval_get_contact_matrix_rcpp <- function(func, timestep) {
+    .Call('_safir2_eval_get_contact_matrix_rcpp', PACKAGE = 'safir2', func, timestep)
+}
+

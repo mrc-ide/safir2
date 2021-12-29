@@ -72,3 +72,32 @@ test_that("approx equality works", {
   expect_true(all(approx_equal(as.numeric(1:5), as.numeric(1:5))))
   expect_false(approx_equal(5.0, 5.0 + sqrt(.Machine$double.eps)))
 })
+
+
+test_that("getting mixing matrix works in R and C++", {
+
+  R0 <- 2
+  timestep <- 100
+  time_period <- 1000
+  tt_contact_matrix <- 0
+
+  pop <- get_population("AFG")
+  pop$n <- as.integer(pop$n / 1000)
+
+  psq <- get_squire_parameters(
+    iso3c = "AFG",
+    population = pop$n,
+    R0 = R0,
+    time_period = time_period,
+    tt_contact_matrix = tt_contact_matrix,
+    max_age = NULL,
+    dt = 1
+  )
+
+  get_contact_R <- make_get_contact_matrix(psq)
+  get_contact_cpp = make_get_contact_matrix_rcpp(parameters = psq)
+  expect_equal(get_contact_R(timestep = 1), eval_get_contact_matrix_rcpp(func = get_contact_cpp, timestep = 1))
+  expect_equal(get_contact_R(timestep = 10), eval_get_contact_matrix_rcpp(func = get_contact_cpp, timestep = 10))
+
+})
+

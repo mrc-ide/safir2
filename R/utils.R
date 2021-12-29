@@ -29,3 +29,44 @@ add_named_listener <- function(event, name, listener) {
 approx_equal <- function(a, b, tol = sqrt(.Machine$double.eps)) {
   abs(a - b) < tol
 }
+
+#' @noRd
+remove_non_numerics <- function(l) {
+  clean <- list()
+  for (key in names(l)) {
+    if (storage.mode(l[[key]]) %in% c("integer", "double")) {
+      clean[[key]] <- l[[key]]
+    }
+  }
+  clean
+}
+
+
+#' @title Contact matrix at current timestep
+#' @description Return a function taking a single argument `timestep`.
+#' @param parameters a named [list]
+#' @return 2D contact matrix for the current timestep
+#' @export
+make_get_contact_matrix <- function(parameters) {
+  stopifnot(!is.null(parameters$mix_mat_set))
+  stopifnot(inherits(parameters$mix_mat_set, "array"))
+  stopifnot(length(dim(parameters$mix_mat_set)) == 3L)
+  stopifnot(dim(parameters$mix_mat_set)[2:3] == rep(17L, 2))
+
+  if (dim(parameters$mix_mat_set)[1] == 1L) {
+    return(
+      function(timestep) {
+        parameters$mix_mat_set[1, , ]
+      }
+    )
+  } else {
+    dt <- parameters$dt
+    return(
+      function(timestep) {
+        day <- ceiling(timestep * dt)
+        parameters$mix_mat_set[day, , ]
+      }
+    )
+  }
+
+}

@@ -137,7 +137,7 @@ get_age_probabilities_fn make_get_age_probabilities(const Rcpp::List& parameters
 
   // time varying
   if (Rf_isMatrix(param)) {
-    if (Rf_ncols(param) != time_period | Rf_nrows(param) != N_age) {
+    if (Rf_ncols(param) != time_period || Rf_nrows(param) != N_age) {
       Rcpp::stop("matrix element 'name' must have 'N_age' rows and 'time_period' columns");
     }
     double dt = Rcpp::as<double>(parameters["dt"]);

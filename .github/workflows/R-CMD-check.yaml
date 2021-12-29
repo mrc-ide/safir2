@@ -3,8 +3,6 @@
 on:
   push:
     branches: [main, dev, feat/*, hotfix/*, bug/*]
-  pull_request:
-    branches: [main, dev]
 
 name: R-CMD-check
 

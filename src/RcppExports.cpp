@@ -22,9 +22,87 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// make_get_contact_matrix_rcpp
+Rcpp::XPtr<get_contact_matrix_fn> make_get_contact_matrix_rcpp(const Rcpp::List& parameters);
+RcppExport SEXP _safir2_make_get_contact_matrix_rcpp(SEXP parametersSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::List& >::type parameters(parametersSEXP);
+    rcpp_result_gen = Rcpp::wrap(make_get_contact_matrix_rcpp(parameters));
+    return rcpp_result_gen;
+END_RCPP
+}
+// eval_get_contact_matrix_rcpp
+Rcpp::NumericMatrix eval_get_contact_matrix_rcpp(Rcpp::XPtr<get_contact_matrix_fn> func, const size_t timestep);
+RcppExport SEXP _safir2_eval_get_contact_matrix_rcpp(SEXP funcSEXP, SEXP timestepSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::XPtr<get_contact_matrix_fn> >::type func(funcSEXP);
+    Rcpp::traits::input_parameter< const size_t >::type timestep(timestepSEXP);
+    rcpp_result_gen = Rcpp::wrap(eval_get_contact_matrix_rcpp(func, timestep));
+    return rcpp_result_gen;
+END_RCPP
+}
+// make_get_vector_rcpp
+Rcpp::XPtr<get_vector_fn> make_get_vector_rcpp(const Rcpp::List& parameters, const std::string name);
+RcppExport SEXP _safir2_make_get_vector_rcpp(SEXP parametersSEXP, SEXP nameSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::List& >::type parameters(parametersSEXP);
+    Rcpp::traits::input_parameter< const std::string >::type name(nameSEXP);
+    rcpp_result_gen = Rcpp::wrap(make_get_vector_rcpp(parameters, name));
+    return rcpp_result_gen;
+END_RCPP
+}
+// eval_get_vector_fn_rcpp
+double eval_get_vector_fn_rcpp(Rcpp::XPtr<get_vector_fn> func, const size_t timestep);
+RcppExport SEXP _safir2_eval_get_vector_fn_rcpp(SEXP funcSEXP, SEXP timestepSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::XPtr<get_vector_fn> >::type func(funcSEXP);
+    Rcpp::traits::input_parameter< const size_t >::type timestep(timestepSEXP);
+    rcpp_result_gen = Rcpp::wrap(eval_get_vector_fn_rcpp(func, timestep));
+    return rcpp_result_gen;
+END_RCPP
+}
+// make_get_age_probabilities_rcpp
+Rcpp::XPtr<get_age_probabilities_fn> make_get_age_probabilities_rcpp(const Rcpp::List& parameters, const std::string name);
+RcppExport SEXP _safir2_make_get_age_probabilities_rcpp(SEXP parametersSEXP, SEXP nameSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::List& >::type parameters(parametersSEXP);
+    Rcpp::traits::input_parameter< const std::string >::type name(nameSEXP);
+    rcpp_result_gen = Rcpp::wrap(make_get_age_probabilities_rcpp(parameters, name));
+    return rcpp_result_gen;
+END_RCPP
+}
+// eval_get_age_probabilities_fn_rcpp
+std::vector<double> eval_get_age_probabilities_fn_rcpp(Rcpp::XPtr<get_age_probabilities_fn> func, const size_t timestep, const std::vector<int>& ages);
+RcppExport SEXP _safir2_eval_get_age_probabilities_fn_rcpp(SEXP funcSEXP, SEXP timestepSEXP, SEXP agesSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::XPtr<get_age_probabilities_fn> >::type func(funcSEXP);
+    Rcpp::traits::input_parameter< const size_t >::type timestep(timestepSEXP);
+    Rcpp::traits::input_parameter< const std::vector<int>& >::type ages(agesSEXP);
+    rcpp_result_gen = Rcpp::wrap(eval_get_age_probabilities_fn_rcpp(func, timestep, ages));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_safir2_testcpp", (DL_FUNC) &_safir2_testcpp, 1},
+    {"_safir2_make_get_contact_matrix_rcpp", (DL_FUNC) &_safir2_make_get_contact_matrix_rcpp, 1},
+    {"_safir2_eval_get_contact_matrix_rcpp", (DL_FUNC) &_safir2_eval_get_contact_matrix_rcpp, 2},
+    {"_safir2_make_get_vector_rcpp", (DL_FUNC) &_safir2_make_get_vector_rcpp, 2},
+    {"_safir2_eval_get_vector_fn_rcpp", (DL_FUNC) &_safir2_eval_get_vector_fn_rcpp, 2},
+    {"_safir2_make_get_age_probabilities_rcpp", (DL_FUNC) &_safir2_make_get_age_probabilities_rcpp, 2},
+    {"_safir2_eval_get_age_probabilities_fn_rcpp", (DL_FUNC) &_safir2_eval_get_age_probabilities_fn_rcpp, 3},
     {NULL, NULL, 0}
 };
 

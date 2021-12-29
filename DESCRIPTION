@@ -24,6 +24,10 @@ ByteCompile: true
 RoxygenNote: 7.1.1
 SystemRequirements: C++14
 NeedsCompilation: yes
+Remotes: 
+    mrc-ide/individual@dev,
+    mrc-ide/squire,
+    mrc-ide/nimue
 Suggests: 
     covr,
     knitr,
@@ -36,5 +40,7 @@ LinkingTo:
     individual
 Imports: 
     Rcpp,
-    individual
+    individual,
+    squire,
+    nimue
 VignetteBuilder: knitr

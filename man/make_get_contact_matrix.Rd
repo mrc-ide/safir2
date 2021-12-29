@@ -2,16 +2,14 @@
 % Please edit documentation in R/utils.R
 \name{make_get_contact_matrix}
 \alias{make_get_contact_matrix}
-\title{Contact matrix at current timestep}
+\title{Get contact matrix at current timestep}
 \usage{
 make_get_contact_matrix(parameters)
 }
 \arguments{
 \item{parameters}{a named [list]}
 }
-\value{
-2D contact matrix for the current timestep
-}
 \description{
-Return a function taking a single argument `timestep`.
+Return a function taking a single argument `timestep` which
+returns a contact matrix for the current timestep
 }

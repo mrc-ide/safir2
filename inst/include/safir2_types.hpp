@@ -2,6 +2,6 @@
 #define SAFIR2_TYPES_HPP
 
 #include <individual.h>
-#include "utils.hpp"
+#include "utils_parameters.hpp"
 
 #endif

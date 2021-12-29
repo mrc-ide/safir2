@@ -71,7 +71,7 @@ get_squire_parameters <- function(iso3c = NULL,
     stopifnot(all(lambda_external >= 0))
     pars$lambda_external <- as.numeric(lambda_external)
   } else {
-    pars$lambda_external <- rep(0, time_period)
+    pars$lambda_external <- 0
   }
 
   return(pars)

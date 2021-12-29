@@ -16,3 +16,19 @@ eval_get_contact_matrix_rcpp <- function(func, timestep) {
     .Call('_safir2_eval_get_contact_matrix_rcpp', PACKAGE = 'safir2', func, timestep)
 }
 
+make_get_vector_rcpp <- function(parameters, name) {
+    .Call('_safir2_make_get_vector_rcpp', PACKAGE = 'safir2', parameters, name)
+}
+
+eval_get_vector_fn_rcpp <- function(func, timestep) {
+    .Call('_safir2_eval_get_vector_fn_rcpp', PACKAGE = 'safir2', func, timestep)
+}
+
+make_get_age_probabilities_rcpp <- function(parameters, name) {
+    .Call('_safir2_make_get_age_probabilities_rcpp', PACKAGE = 'safir2', parameters, name)
+}
+
+eval_get_age_probabilities_fn_rcpp <- function(func, timestep, ages) {
+    .Call('_safir2_eval_get_age_probabilities_fn_rcpp', PACKAGE = 'safir2', func, timestep, ages)
+}
+

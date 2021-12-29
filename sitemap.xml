@@ -25,10 +25,28 @@
     <loc>/reference/add_named_listener.html</loc>
   </url>
   <url>
-    <loc>/reference/hello.html</loc>
+    <loc>/reference/get_asymptomatic.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_population.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_squire_parameters.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/interp_input_par.html</loc>
+  </url>
+  <url>
+    <loc>/reference/make_get_age_probabilities.html</loc>
+  </url>
+  <url>
+    <loc>/reference/make_get_contact_matrix.html</loc>
+  </url>
+  <url>
+    <loc>/reference/make_get_vector.html</loc>
   </url>
   <url>
     <loc>/reference/safir2.html</loc>

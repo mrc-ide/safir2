@@ -152,16 +152,18 @@ test_that("getting time varying age-structured transition probabilities works in
   expect_error(make_get_age_probabilities(parameters = pars, name = "dt"))
   expect_error(make_get_age_probabilities_rcpp(parameters = pars, name = "dt"))
 
-  # get_par <- make_get_vector(parameters = pars, name = "y")
-  # get_par_cpp <- make_get_vector_rcpp(parameters = pars, name = "y")
-  #
-  # expect_equal(get_par(10), eval_get_vector_fn_rcpp(func = get_par_cpp, timestep = 10))
-  #
-  # get_par <- make_get_vector(parameters = pars, name = "x")
-  # get_par_cpp <- make_get_vector_rcpp(parameters = pars, name = "x")
-  #
-  # expect_equal(get_par(5), pars$x[3])
-  # expect_equal(get_par(5), eval_get_vector_fn_rcpp(func = get_par_cpp, timestep = 5))
+  get_par <- make_get_age_probabilities(parameters = pars, name = "y")
+  get_par_cpp <- make_get_age_probabilities_rcpp(parameters = pars, name = "y")
+
+  ages <- sample(x = 17, size = 20, replace = TRUE)
+
+  expect_equal(get_par(10, ages), eval_get_age_probabilities_fn_rcpp(func = get_par_cpp, timestep = 10, ages = ages))
+
+  get_par <- make_get_age_probabilities(parameters = pars, name = "x")
+  get_par_cpp <- make_get_age_probabilities_rcpp(parameters = pars, name = "x")
+
+  expect_equal(get_par(5, ages), pars$x[cbind(ages, 3)])
+  expect_equal(get_par(5, ages), eval_get_age_probabilities_fn_rcpp(func = get_par_cpp, timestep = 5, ages = ages))
 
 })
 

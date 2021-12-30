@@ -40,6 +40,9 @@
     <loc>/reference/interp_input_par.html</loc>
   </url>
   <url>
+    <loc>/reference/interpolate_rt.html</loc>
+  </url>
+  <url>
     <loc>/reference/make_get_age_probabilities.html</loc>
   </url>
   <url>
@@ -49,9 +52,12 @@
     <loc>/reference/make_get_vector.html</loc>
   </url>
   <url>
-    <loc>/reference/safir2.html</loc>
+    <loc>/reference/make_rerlang.html</loc>
   </url>
   <url>
-    <loc>/reference/testcpp.html</loc>
+    <loc>/reference/make_rexp.html</loc>
+  </url>
+  <url>
+    <loc>/reference/safir2.html</loc>
   </url>
 </urlset>

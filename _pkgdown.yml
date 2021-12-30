@@ -3,3 +3,38 @@ template:
   bslib:
     border-radius: 0.5rem
     btn-border-radius: 0.25rem
+
+reference:
+
+- title: Utilities
+
+- subtitle: Parameters
+  desc: >
+    Utilities to help get potentially time-varying parameters during simulation
+    runs. Most return functions that are called within safir2.
+  contents:
+  - make_get_age_probabilities
+  - make_get_contact_matrix
+  - make_get_vector
+
+- subtitle: Distributions
+  desc: >
+   Utilities which help draw random variates.
+  contents:
+  - make_rexp
+  - make_rerlang
+
+- subtitle: Setup
+  desc: >
+   Utilities useful for initializing the model.
+  contents:
+  - add_named_listener
+  - get_asymptomatic
+  - get_population
+  - get_squire_parameters
+  - interp_input_par
+  - interpolate_rt
+
+- title: Other
+  contents:
+  - safir2

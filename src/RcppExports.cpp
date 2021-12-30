@@ -11,17 +11,6 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// testcpp
-Rcpp::NumericVector testcpp(const int x);
-RcppExport SEXP _safir2_testcpp(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const int >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(testcpp(x));
-    return rcpp_result_gen;
-END_RCPP
-}
 // make_get_contact_matrix_rcpp
 Rcpp::XPtr<get_contact_matrix_fn> make_get_contact_matrix_rcpp(const Rcpp::List& parameters);
 RcppExport SEXP _safir2_make_get_contact_matrix_rcpp(SEXP parametersSEXP) {
@@ -96,7 +85,6 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_safir2_testcpp", (DL_FUNC) &_safir2_testcpp, 1},
     {"_safir2_make_get_contact_matrix_rcpp", (DL_FUNC) &_safir2_make_get_contact_matrix_rcpp, 1},
     {"_safir2_eval_get_contact_matrix_rcpp", (DL_FUNC) &_safir2_eval_get_contact_matrix_rcpp, 2},
     {"_safir2_make_get_vector_rcpp", (DL_FUNC) &_safir2_make_get_vector_rcpp, 2},

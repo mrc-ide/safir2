@@ -48,7 +48,7 @@ create_continuous_age_variable <- function(pop, max_age = 100) {
 
   # get out country median ages
   iso3c <- pop$iso3c[1]
-  med_age <- safir::iso3c_ages$age[safir::iso3c_ages$iso3c == iso3c]
+  med_age <- safir2::iso3c_ages$age[safir2::iso3c_ages$iso3c == iso3c]
 
   # get the top end of the 5 year age bins
   age_bins <- get_age_bins(pop$age_group)
@@ -115,7 +115,7 @@ get_age_bins <- function(groups) {
 #'
 #' @details Identifies age variables to be switched based on parameters object
 #' @param discrete_ages discrete ages
-#' @param parameters Parameters object created by \code{\link{get_parameters}}
+#' @param parameters Parameters object created by [safir2::get_squire_parameters]
 #' @return Returns values to swap
 #' @importFrom utils head tail
 identify_ages_to_adjust <- function(discrete_ages, parameters) {

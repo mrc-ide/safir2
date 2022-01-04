@@ -1,6 +1,6 @@
 test_that("create_continuous_age_variable creates the right number of ages", {
 
-  pop <- safir::get_population("AFG")
+  pop <- get_population("AFG")
   pop$n <- as.integer(pop$n/10000)
   ages <- create_continuous_age_variable(pop)
   expect_length(ages, sum(pop$n))

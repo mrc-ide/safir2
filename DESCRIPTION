@@ -21,7 +21,7 @@ BugReports: https://github.com/mrc-ide/safir2/issues
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 SystemRequirements: C++14
 NeedsCompilation: yes
 Remotes: 
@@ -44,3 +44,5 @@ Imports:
     squire,
     nimue
 VignetteBuilder: knitr
+Depends: 
+    R (>= 2.10)

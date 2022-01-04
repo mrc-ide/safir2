@@ -9,7 +9,7 @@ identify_ages_to_adjust(discrete_ages, parameters)
 \arguments{
 \item{discrete_ages}{discrete ages}
 
-\item{parameters}{Parameters object created by \code{\link{get_parameters}}}
+\item{parameters}{Parameters object created by [safir2::get_squire_parameters]}
 }
 \value{
 Returns values to swap

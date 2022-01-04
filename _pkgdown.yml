@@ -6,6 +6,26 @@ template:
 
 reference:
 
+- title: Variables
+
+- subtitle: Age
+  desc: >
+    Functions to help make age variables.
+  contents:
+  - create_age_variables
+  - create_continuous_age_variable
+  - create_discrete_age_variable
+  - identify_ages_to_adjust
+  - swap_ages
+
+- subtitle: Compartments
+  desc: >
+    Functions to help make the compartmental state variables.
+  contents:
+  - create_variables
+  - create_compartment_variables
+  - get_state_vector
+
 - title: Utilities
 
 - subtitle: Parameters

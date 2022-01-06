@@ -1,6 +1,6 @@
 # base set of events for safir2 models
 
-#' @title Create events
+#' @title Create disease progression events
 #' @description Create named list of [individual::TargetedEvent] objects which
 #' simulate disease progression. The list of events is as follows:
 #'
@@ -27,6 +27,8 @@
 #' @export
 create_events <- function(parameters) {
 
+  stopifnot(is.numeric(parameters$population))
+
   # pop size
   N <- sum(parameters$population)
 
@@ -37,14 +39,14 @@ create_events <- function(parameters) {
     asymp_infection = TargetedEvent$new(N),
     severe_infection = TargetedEvent$new(N),
     hospitilisation = TargetedEvent$new(N),
-    imv_get_live = TargetedEvent$new(N), # need ICU, gets bed, lives
-    imv_get_die = TargetedEvent$new(N), # need ICU, gets bed, dies
-    iox_get_live = TargetedEvent$new(N), # need hosp, gets bed, lives
-    iox_get_die = TargetedEvent$new(N), # need hosp, gets bed, dies
-    imv_not_get_live = TargetedEvent$new(N), # need ICU, doesn't get bed, lives
-    imv_not_get_die = TargetedEvent$new(N), # need ICU, doesn't get bed, dies
-    iox_not_get_live = TargetedEvent$new(N), # need hosp, doesn't get bed, lives
-    iox_not_get_die = TargetedEvent$new(N), # need hosp, doesn't get bed, dies
+    ICU_get_live = TargetedEvent$new(N), # need ICU, gets bed, lives
+    ICU_get_die = TargetedEvent$new(N), # need ICU, gets bed, dies
+    hosp_get_live = TargetedEvent$new(N), # need hosp, gets bed, lives
+    hosp_get_die = TargetedEvent$new(N), # need hosp, gets bed, dies
+    ICU_not_get_live = TargetedEvent$new(N), # need ICU, doesn't get bed, lives
+    ICU_not_get_die = TargetedEvent$new(N), # need ICU, doesn't get bed, dies
+    hosp_not_get_live = TargetedEvent$new(N), # need hosp, doesn't get bed, lives
+    hosp_not_get_die = TargetedEvent$new(N), # need hosp, doesn't get bed, dies
     stepdown = TargetedEvent$new(N),
     recovery = TargetedEvent$new(N),
     immunity_loss = TargetedEvent$new(N),

@@ -2,7 +2,7 @@
 % Please edit documentation in R/events_base.R
 \name{create_events}
 \alias{create_events}
-\title{Create events}
+\title{Create disease progression events}
 \usage{
 create_events(parameters)
 }

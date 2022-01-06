@@ -22,6 +22,15 @@ test_that("getting mixing matrix works in R and C++", {
   expect_equal(get_contact_R(timestep = 1), eval_get_contact_matrix_rcpp(func = get_contact_cpp, timestep = 1))
   expect_equal(get_contact_R(timestep = 10), eval_get_contact_matrix_rcpp(func = get_contact_cpp, timestep = 10))
 
+  psq$mix_mat_set <- array(data = rexp(n = 17*17*2), dim = c(2, 17, 17))
+  get_contact_R <- make_get_contact_matrix(psq)
+  get_contact_cpp = make_get_contact_matrix_rcpp(parameters = psq)
+
+  expect_equal(get_contact_R(timestep = 1), psq$mix_mat_set[1L, , ])
+  expect_equal(get_contact_R(timestep = 1), eval_get_contact_matrix_rcpp(func = get_contact_cpp, timestep = 1))
+  expect_equal(get_contact_R(timestep = 10), psq$mix_mat_set[2L, , ])
+  expect_equal(get_contact_R(timestep = 10), eval_get_contact_matrix_rcpp(func = get_contact_cpp, timestep = 10))
+
 })
 
 test_that("getting time varying vector works in R and C++", {

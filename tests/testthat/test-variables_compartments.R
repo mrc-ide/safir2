@@ -7,6 +7,5 @@ test_that("create_variables returns the correct output", {
   expect_length(length(theages$discrete_age), 1)
 
   expect_length(theages$discrete_age$get_values(), sum(pop$n))
-  expect_true()
 
 })

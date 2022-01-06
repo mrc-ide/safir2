@@ -7,7 +7,7 @@
 create_discrete_age_variable(ages, pop)
 }
 \arguments{
-\item{ages}{Vector of ages from [create_continuous_age_variable]}
+\item{ages}{Vector of ages from \link{create_continuous_age_variable}}
 
 \item{pop}{Vector of integer ages}
 }

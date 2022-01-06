@@ -7,15 +7,15 @@
 add_named_listener(event, name, listener)
 }
 \arguments{
-\item{event}{a [individual::Event] or [individual::TargetedEvent] object}
+\item{event}{a \link[individual:Event]{individual::Event} or \link[individual:TargetedEvent]{individual::TargetedEvent} object}
 
 \item{name}{a name}
 
-\item{listener}{a function which takes either a single argument (`timestep`)
-if event is a [individual::Event] or two arguments (`timestep`, `target`) if
-the event is a [individual::TargetedEvent]}
+\item{listener}{a function which takes either a single argument (\code{timestep})
+if event is a \link[individual:Event]{individual::Event} or two arguments (\code{timestep}, \code{target}) if
+the event is a \link[individual:TargetedEvent]{individual::TargetedEvent}}
 }
 \description{
-Given a [individual::Event] or [individual::TargetedEvent] object,
+Given a \link[individual:Event]{individual::Event} or \link[individual:TargetedEvent]{individual::TargetedEvent} object,
 add a named listener to the list of listeners stored in that event.
 }

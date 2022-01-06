@@ -171,3 +171,12 @@ remove_non_numerics <- function(l) {
   clean
 }
 
+#' @noRd
+is_finite_numeric <- function(x) {
+  if (is.null(x)) {
+    return(FALSE)
+  }
+  vapply(X = x, FUN = function(xx) {
+    return(is.numeric(xx) & is.finite(xx))
+  }, FUN.VALUE = logical(1), USE.NAMES = FALSE)
+}

@@ -36,6 +36,11 @@ add_named_listener <- function(event, name, listener) {
 #' @export
 create_event_scheduler_listener <- function(event, duration, func, shift, dt) {
   stopifnot(inherits(event, "TargetedEvent"))
+  stopifnot(inherits(func, "function"))
+  stopifnot(is_finite_numeric(duration))
+  stopifnot(is_finite_numeric(shift))
+  stopifnot(is_finite_numeric(dt))
+
   dwell <- func(mu = duration, dt = dt, shift = shift)
   function(timestep, target) {
     event$schedule(target = target, delay = dwell(n = target$size()))
@@ -52,6 +57,7 @@ create_event_scheduler_listener <- function(event, duration, func, shift, dt) {
 create_state_update_listener <- function(states, destination) {
   stopifnot(is.character(destination))
   stopifnot(inherits(states, "CategoricalVariable"))
+
   function(timestep, target) {
     states$queue_update(value = destination, index = target)
   }

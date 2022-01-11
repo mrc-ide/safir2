@@ -77,13 +77,16 @@ make_get_age_probabilities <- function(parameters, name) {
 
   probs <- parameters[[name]]
 
-  if (is.matrix(parameters[[name]])) {
+  if (is.matrix(probs)) {
+    stopifnot(nrow(probs) == parameters$N_age)
+    stopifnot(ncol(probs) == parameters$time_period)
     dt <- parameters$dt
     function(timestep, ages) {
       day <- ceiling(timestep * dt)
       probs[cbind(ages, day)]
     }
   } else {
+    stopifnot(length(probs) == parameters$N_age)
     return(
       function(timestep, ages) {
         probs[ages]

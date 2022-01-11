@@ -108,7 +108,9 @@ test_that("getting time varying age-structured transition probabilities works in
     N_age = 17L,
     time_period = 10,
     x = matrix(runif(n = 17*10), nrow = 17, ncol = 10),
+    xx = matrix(runif(n = 2*5), nrow = 2, ncol = 5),
     y = runif(n = 17),
+    yy = runif(n = 3),
     zz = "5",
     dt = 0.5
   )
@@ -119,8 +121,14 @@ test_that("getting time varying age-structured transition probabilities works in
   expect_error(make_get_age_probabilities(parameters = pars, name = "zz"))
   expect_error(make_get_age_probabilities_rcpp(parameters = pars, name = "zz"))
 
+  expect_error(make_get_age_probabilities(pars,"xx"))
+  expect_error(make_get_age_probabilities_rcpp(pars,"xx"))
+
   expect_error(make_get_age_probabilities(parameters = pars, name = "dt"))
   expect_error(make_get_age_probabilities_rcpp(parameters = pars, name = "dt"))
+
+  expect_error(make_get_age_probabilities(parameters = pars, name = "yy"))
+  expect_error(make_get_age_probabilities_rcpp(parameters = pars, name = "yy"))
 
   get_par <- make_get_age_probabilities(parameters = pars, name = "y")
   get_par_cpp <- make_get_age_probabilities_rcpp(parameters = pars, name = "y")

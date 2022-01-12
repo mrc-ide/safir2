@@ -7,9 +7,9 @@
 make_get_contact_matrix(parameters)
 }
 \arguments{
-\item{parameters}{a named [list]}
+\item{parameters}{a named \link{list}}
 }
 \description{
-Return a function taking a single argument `timestep` which
+Return a function taking a single argument \code{timestep} which
 returns a contact matrix for the current timestep
 }

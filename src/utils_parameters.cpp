@@ -1,9 +1,16 @@
 #include "../inst/include/utils_parameters.hpp"
 
+
+/* helper function to get current day */
 size_t get_day(const size_t timestep, const double dt) {
   return static_cast<size_t>(std::ceil(static_cast<double>(timestep) * dt)) - 1;
 };
 
+
+/*
+  get function that returns the current contact matrix;
+  takes args: (size_t timestep)
+*/
 get_contact_matrix_fn make_get_contact_matrix(const Rcpp::List& parameters) {
 
   SEXP mix_mat_set = parameters["mix_mat_set"];
@@ -63,6 +70,11 @@ Rcpp::NumericMatrix eval_get_contact_matrix_rcpp(Rcpp::XPtr<get_contact_matrix_f
 };
 
 
+
+/*
+ get function that returns the current value of vector (or scalar) parameter
+ takes args: (size_t timestep)
+ */
 get_vector_fn make_get_vector(const Rcpp::List& parameters, const std::string name) {
   if (name.compare("dt") == 0) {
     Rcpp::stop("element 'name' must not be 'dt'");
@@ -113,7 +125,10 @@ double eval_get_vector_fn_rcpp(Rcpp::XPtr<get_vector_fn> func, const size_t time
 };
 
 
-// age-structured (and optionally time) transition probabilities
+/*
+  age-structured (and optionally time) transition probabilities
+  takes args: (const size_t timestep, const std::vector<int>& ages)
+*/
 get_age_probabilities_fn make_get_age_probabilities(const Rcpp::List& parameters, const std::string name) {
   if (name.compare("dt") == 0) {
     Rcpp::stop("element 'name' must not be 'dt'");

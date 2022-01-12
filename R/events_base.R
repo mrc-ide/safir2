@@ -62,7 +62,6 @@ create_events <- function(parameters) {
 #' @param variables list of variables in the model
 #' @param events a list of events in the model
 #' @param parameters the model parameters
-#' @param dt size of time step
 #' @param shift schedule future events after minimum number of time step delay
 #' @param shift_exposure schedule exposure event after minimum number of time step delay
 #' @export
@@ -70,29 +69,43 @@ attach_event_listeners <- function(
   variables,
   events,
   parameters,
-  dt,
   shift = 1L,
   shift_exposure = 1L
 ) {
 
-  # Exposure ----------
+  dt <- parameters$dt
 
-  events$exposure$add_listener(
-    create_state_update_listener(
-      variables$states,
-      "E"
+  # Exposure ----------
+  add_named_listener(
+    event = events$exposure,
+    name = "state_update",
+    listener = create_state_update_listener(
+      states = variables$states,
+      destination = "E"
     )
   )
 
-  events$exposure$add_listener(
-    create_exposure_scheduler_listener(
-      events,
-      variables,
-      parameters,
+  add_named_listener(
+    event = events$exposure,
+    name = "state_update",
+    listener = create_exposure_scheduler_listener(
+      events = events,
+      variables = variables,
+      parameters = parameters,
       dt = dt,
       shift = shift_exposure
     )
   )
+
+  # events$exposure$add_listener(
+  #   create_exposure_scheduler_listener(
+  #     events,
+  #     variables,
+  #     parameters,
+  #     dt = dt,
+  #     shift = shift_exposure
+  #   )
+  # )
 
   # IMild ----------
 

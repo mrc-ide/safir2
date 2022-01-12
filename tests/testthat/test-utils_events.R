@@ -65,3 +65,33 @@ test_that("test add_named_listener works with TargetedEvent", {
   expect_equal(length(fn2), 1)
 
 })
+
+
+test_that("test create_event_scheduler_listener works", {
+
+  event <- TargetedEvent$new(population_size = 10)
+  draw <- make_rerlang
+
+  expect_error(create_event_scheduler_listener(event = NULL, duration = 5, func = draw, shift = 1, dt = 1))
+  expect_error(create_event_scheduler_listener(event = event, duration = -5, func = draw, shift = 1, dt = 1))
+  expect_error(create_event_scheduler_listener(event = event, duration = NULL, func = draw, shift = 1, dt = 1))
+  expect_error(create_event_scheduler_listener(event = event, duration = 5, func = NULL, shift = 1, dt = 1))
+  expect_error(create_event_scheduler_listener(event = event, duration = 5, func = draw, shift = NULL, dt = 1))
+  expect_error(create_event_scheduler_listener(event = event, duration = 5, func = draw, shift = 5, dt = NULL))
+
+  sched <- create_event_scheduler_listener(event = event, duration = 5, func = draw, shift = 1, dt = 1)
+  expect_true(inherits(sched, "function"))
+})
+
+
+test_that("test create_state_update_listener", {
+
+  states <- CategoricalVariable$new(categories = c("A", "B"), initial_values = rep(c("A", "B"), each = 5))
+
+  expect_error(create_state_update_listener(states = states, destination = "X"))
+  expect_error(create_state_update_listener(states = states, destination = NULL))
+  expect_error(create_state_update_listener(states = NULL, destination = "B"))
+
+  listen <- create_state_update_listener(states = states, destination = "B")
+  expect_true(inherits(listen, "function"))
+})

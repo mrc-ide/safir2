@@ -57,6 +57,7 @@ create_event_scheduler_listener <- function(event, duration, func, shift, dt) {
 create_state_update_listener <- function(states, destination) {
   stopifnot(is.character(destination))
   stopifnot(inherits(states, "CategoricalVariable"))
+  stopifnot(destination %in% states$get_categories())
 
   function(timestep, target) {
     states$queue_update(value = destination, index = target)

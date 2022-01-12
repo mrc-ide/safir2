@@ -8,7 +8,6 @@ attach_event_listeners(
   variables,
   events,
   parameters,
-  dt,
   shift = 1L,
   shift_exposure = 1L
 )
@@ -19,8 +18,6 @@ attach_event_listeners(
 \item{events}{a list of events in the model}
 
 \item{parameters}{the model parameters}
-
-\item{dt}{size of time step}
 
 \item{shift}{schedule future events after minimum number of time step delay}
 

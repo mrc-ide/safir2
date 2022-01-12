@@ -67,39 +67,31 @@ test_that("test add_named_listener works with TargetedEvent", {
 })
 
 
-test_that("approx equality works", {
-  expect_true(all(approx_equal(1:5, 1:5)))
-  expect_true(all(approx_equal(as.numeric(1:5), as.numeric(1:5))))
-  expect_false(approx_equal(5.0, 5.0 + sqrt(.Machine$double.eps)))
+test_that("test create_event_scheduler_listener works", {
+
+  event <- TargetedEvent$new(population_size = 10)
+  draw <- make_rerlang
+
+  expect_error(create_event_scheduler_listener(event = NULL, duration = 5, func = draw, shift = 1, dt = 1))
+  expect_error(create_event_scheduler_listener(event = event, duration = -5, func = draw, shift = 1, dt = 1))
+  expect_error(create_event_scheduler_listener(event = event, duration = NULL, func = draw, shift = 1, dt = 1))
+  expect_error(create_event_scheduler_listener(event = event, duration = 5, func = NULL, shift = 1, dt = 1))
+  expect_error(create_event_scheduler_listener(event = event, duration = 5, func = draw, shift = NULL, dt = 1))
+  expect_error(create_event_scheduler_listener(event = event, duration = 5, func = draw, shift = 5, dt = NULL))
+
+  sched <- create_event_scheduler_listener(event = event, duration = 5, func = draw, shift = 1, dt = 1)
+  expect_true(inherits(sched, "function"))
 })
 
 
-test_that("remove_non_numerics removes characters and characters of arrays", {
-  actual <- remove_non_numerics(list(
-    a = array(c('1', '2'), dim=c(1, 2)),
-    b = c('1', '2'),
-    c = c(1, 2)
-  ))
-  expect_equal(actual, list(c = c(1, 2)))
-})
+test_that("test create_state_update_listener", {
 
-test_that("interpolating Rt works", {
-  expect_error(interpolate_rt(dates = c(as.Date(x = "2/1/2020", format = "%m/%d/%Y"), as.Date(x = "1/1/2020", format = "%m/%d/%Y")),rt = c(1, 2)))
-  expect_error(interpolate_rt(dates = c(as.Date(x = "2/1/2020", format = "%m/%d/%Y"), as.Date(x = "1/1/2020", format = "%m/%d/%Y")),rt = c(1, 2), max_date = as.Date(x = "6/1/2020", format = "%m/%d/%Y")))
-  expect_error(interpolate_rt(dates = c(as.Date(x = "2/1/2020", format = "%m/%d/%Y"), as.Date(x = "4/1/2020", format = "%m/%d/%Y")),rt = c(1)))
-  expect_error(interpolate_rt(dates = c(as.Date(x = "2/1/2020", format = "%m/%d/%Y"), as.Date(x = "4/1/2020", format = "%m/%d/%Y")),rt = c(1), max_date = as.Date(x = "6/1/2020", format = "%m/%d/%Y")))
-  expect_error(interpolate_rt(dates = as.Date(x = "2/1/2020", format = "%m/%d/%Y"),rt = c(1, 2)))
-  expect_error(interpolate_rt(dates = as.Date(x = "2/1/2020", format = "%m/%d/%Y"),rt = c(1, 2), max_date = as.Date(x = "6/1/2020", format = "%m/%d/%Y")))
-  expect_error(interpolate_rt(dates = "2/1/2020",rt = c(1, 2)))
-  expect_error(interpolate_rt(dates = c("2/1/2020", "4/1/2020"),rt = c(1, 2)))
-  expect_error(interpolate_rt(dates = as.Date(c("2/1/2020", "4/1/2020"), format = "%m/%d/%Y") ,rt = c(NaN, 2)))
-  expect_error(interpolate_rt(dates = as.Date(c("2/1/2020", "4/1/2020"), format = "%m/%d/%Y") ,rt = c(1, -5)))
-  expect_error(interpolate_rt(dates = as.Date(c("2/1/2020", "4/1/2020"), format = "%m/%d/%Y") ,rt = c(1, NA)))
-  expect_error(interpolate_rt(dates = as.Date(c("2/1/2020", "4/1/2020"), format = "%m/%d/%Y") ,rt = c("5", 2)))
+  states <- CategoricalVariable$new(categories = c("A", "B"), initial_values = rep(c("A", "B"), each = 5))
 
-  interp <- interpolate_rt(dates = as.Date(c("2/1/2020", "2/15/2020"), format = "%m/%d/%Y") ,rt = c(1, 2))
-  expect_true(all(vapply(interp, length, integer(1)) == 15))
-  expect_true(interp$Rt[1] == 1)
-  expect_true(interp$Rt[15] == 2)
-  expect_equal(interp$Rt_tt, 1:15)
+  expect_error(create_state_update_listener(states = states, destination = "X"))
+  expect_error(create_state_update_listener(states = states, destination = NULL))
+  expect_error(create_state_update_listener(states = NULL, destination = "B"))
+
+  listen <- create_state_update_listener(states = states, destination = "B")
+  expect_true(inherits(listen, "function"))
 })

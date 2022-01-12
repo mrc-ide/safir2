@@ -7,12 +7,12 @@
 make_get_age_probabilities(parameters, name)
 }
 \arguments{
-\item{parameters}{a named [list]}
+\item{parameters}{a named \link{list}}
 
 \item{name}{an element in the parameter list, must be numeric}
 }
 \description{
-Return a function taking two arguments `timestep` and `ages` which
-returns the probabilities stored in `name` at the current timestep and for
-those persons who age is in `ages`.
+Return a function taking two arguments \code{timestep} and \code{ages} which
+returns the probabilities stored in \code{name} at the current timestep and for
+those persons who age is in \code{ages}.
 }

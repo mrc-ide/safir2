@@ -7,11 +7,11 @@
 make_get_vector(parameters, name)
 }
 \arguments{
-\item{parameters}{a named [list]}
+\item{parameters}{a named \link{list}}
 
 \item{name}{an element in the parameter list, must be numeric}
 }
 \description{
-Return a function taking a single argument `timestep` which
-returns the value of `name` at the current timestep
+Return a function taking a single argument \code{timestep} which
+returns the value of \code{name} at the current timestep
 }

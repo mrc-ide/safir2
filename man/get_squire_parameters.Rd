@@ -31,7 +31,7 @@ Models infectious contacts the population has with external (unmodeled) populati
 
 \item{dt}{size of time step}
 
-\item{...}{Other parameters for [squire::parameters_explicit_SEEIR]}
+\item{...}{Other parameters for \link[squire:parameters_explicit_SEEIR]{squire::parameters_explicit_SEEIR}}
 }
 \value{
 squire model parameters

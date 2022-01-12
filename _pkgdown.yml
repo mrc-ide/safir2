@@ -6,6 +6,44 @@ template:
 
 reference:
 
+- title: Variables
+
+- subtitle: Age
+  desc: >
+    Functions to help make age variables.
+  contents:
+  - create_age_variables
+  - create_continuous_age_variable
+  - create_discrete_age_variable
+  - identify_ages_to_adjust
+  - swap_ages
+
+- subtitle: Compartments
+  desc: >
+    Functions to help make the compartmental state variables.
+  contents:
+  - create_variables
+  - create_compartment_variables
+  - get_state_vector
+
+- title: Events
+  desc: >
+    Events are used to simulate disease progression.
+  contents:
+  - create_events
+  - attach_event_listeners
+  - create_event_scheduler_listener
+  - create_state_update_listener
+
+- title: Immunity
+  desc: >
+    Function which help model NAT (neutralizing antibody titres) and their
+    relationship to protection against infection, severe disease, and onward infectiousness.
+  contents:
+  - make_get_NAT
+  - make_get_ve_severe
+  - ve_infection_functional_form
+
 - title: Utilities
 
 - subtitle: Parameters
@@ -38,3 +76,4 @@ reference:
 - title: Other
   contents:
   - safir2
+  - iso3c_ages
